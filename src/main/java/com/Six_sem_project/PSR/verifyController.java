@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
             "http://localhost:3000",
             "http://127.0.0.1:3000",
             "http://localhost:5500",
+            "https://secondhandfrontend.onrender.com",
             "http://127.0.0.1:5500"
     }, allowCredentials = "true")
 
