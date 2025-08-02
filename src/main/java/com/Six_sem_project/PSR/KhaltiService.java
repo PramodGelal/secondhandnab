@@ -83,8 +83,8 @@ String buyer_email;
 
 
         Map<String, Object> payload = new HashMap<>();
-        payload.put("return_url", "https://secondhandnab.onrender.com/receipt.html?purchase_order_id=" + purchaseId);
-        payload.put("website_url", "https://secondhandnab.onrender.com/home.html");
+        payload.put("return_url", "https://secondhandfrontend.onrender.com/receipt.html?purchase_order_id=" + purchaseId);
+        payload.put("website_url", "https://secondhandfrontend.onrender.com/receipt.html/home.html");
 
         payload.put("amount", itemPrice*100);
        payload.put("purchase_order_id", purchaseId);

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 @Service
@@ -18,15 +19,21 @@ public class CloudinaryService {
             @Value("${cloudinary.api_key}") String apiKey,
             @Value("${cloudinary.api_secret}") String apiSecret
     ) {
-        cloudinary = new Cloudinary(ObjectUtils.asMap(
+        this.cloudinary = new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", cloudName,
                 "api_key", apiKey,
                 "api_secret", apiSecret
         ));
     }
 
-    public String uploadImage(File file) throws Exception {
-        Map uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
-        return uploadResult.get("url").toString();
+    public String uploadImage(File file) throws IOException {
+        try {
+            Map uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
+            return uploadResult.get("secure_url").toString();
+        } catch (Exception e) {
+            e.printStackTrace();  // Add this
+            throw new IOException("Cloudinary upload failed: " + e.getMessage());
+        }
     }
+
 }

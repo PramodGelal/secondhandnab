@@ -85,6 +85,7 @@ public class ItemController {
 
         String imageUrl;
         try {
+            System.out.println("yeta aayo image kasto xa "+tempFile);
             imageUrl = cloudinaryService.uploadImage(tempFile);
         } catch (Exception e) {
             tempFile.delete();
